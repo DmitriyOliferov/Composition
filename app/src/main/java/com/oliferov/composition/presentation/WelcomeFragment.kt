@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.oliferov.composition.R
 import com.oliferov.composition.databinding.FragmentWelcomeBinding
-import com.oliferov.composition.presentation.ChooseLevelFragment.Companion.NAME
 import java.lang.RuntimeException
 
 class WelcomeFragment : Fragment() {
@@ -33,10 +33,7 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun launchChooseLevelFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container_fragment,ChooseLevelFragment.newInstance())
-            .addToBackStack(NAME)
-            .commit()
+       findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment)
     }
 
     override fun onDestroyView() {
